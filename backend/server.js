@@ -11,11 +11,9 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // Permitir CORS para desarrollo (Vite / otros clientes)
+// Aceptar cualquier origen en localhost (diferentes puertos) y 127.0.0.1
 const corsOptions = {
-	origin: [
-		'http://localhost:5173',
-		'http://127.0.0.1:5173',
-	],
+	origin: [/^https?:\/\/localhost(?::\d+)?$/, /^https?:\/\/127\.0\.0\.1(?::\d+)?$/],
 	methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 	allowedHeaders: ['Content-Type', 'Authorization'],
 	credentials: true,
